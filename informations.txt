@@ -1,0 +1,22 @@
+c'est à maven de télécharger les dependences qui se trouvent dans le fichier pom.xml et :
+	* les mèttre dans le fichier "Maven Dependencies" du projet (qui est initialement 'Spring Legacy Project' ) &&
+	* dans " C:\Users\nassima\.m2\repository "
+	
+	
+	
+	NB: avant de faire l'injection des dependence par Spring et Puisqu'on utilise JPA , on aura besoin d'un fichier xml qu'on l'appellera "persistence.xml" (se trouvant sous : src/main/resources --> META_INF)
+	
+	*pour réussir  l'application, il faut bien réussir : 1\ les exigences fonctionnels (code fonctionnel)
+														 2\ les exigences techniques  (code technique --> tous ce qui est : gestion de transaction, de la persistence , de data sources (çàd, source de données qui est la base de donnée) .....
+														 
+	* l'injection des dépendences IOC : le principe c'est : 1\ moi , je m'occupe que des exigences fonctionnels  et 
+														    2\ je délegue les exigences techniques au framework --> ici, c'est Spring qui va faire ça. donc, 
+														    on va demander à Spring de créer un objet dao, un objet metier .
+														    et pour que ça marche, il faut : 1\ déployer un data source (base de données)  --> et pour le faire, il faut spécifier le pilote JDBC,le password,l'URL et le username (çàd données pour se connecter à la base de donnée)
+														    				 				 2\ créer un objet 'persistenceUnitManager'....
+														    				 				 .
+														    				 				 .
+														    				 				 .
+														    				 				 3\ on demande à Spring d'utiliser un gestionnaire de transaction (transactionManager) 
+														    				 				 
+														    				 				 =====> et tous ça, c'est de la configuration  et non pas de la programmation.  (on vas dans un fichier xml et déclarer tous ces éléments) içi le fichier s'appelle 'applicationContext.xml' qui est un fichier de type : SpringBeanConfigurationFile qu'on le crée sous src/main/resources
